@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 2.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Your description goes here" />
+	<meta name="keywords" content="your,keywords,goes,here" />
+	<meta name="author" content="Your Name" />
+	<link rel="stylesheet" type="text/css" href="basic-reader.css" title="Basic Reader CSS template" media="screen,projection" />
+	<title>Basic Reader v2.0</title>
+</head>
+
+<body>
+<div id="wrap">
+	<div id="sidebar">
+		<h2>Contents:</h2>
+		<ul>
+			<li><a href="#1">What is Physical Modelling?</a></li>
+			<li><a href="#2">d’Alembert’s Travelling Wave Solution</a></li>
+			<li><a href="#3">The Kelly-Lochbaum Vocal Tract Model</a></li>
+			<li><a href="#4">Digital Waveguides</a>
+				<ul>
+					<li><a href="#5">Plucked String Example</a></li>
+					<li><a href="#6">Slide Flute Example</a></li>
+				</ul>
+			</li>
+			<li><a href="#7">The Yamaha VL-1</a></li>
+			<li><a href="#8">Current Trends in Physical Modelling</a></li>
+			<li><a href="#9">The Future</a></li>
+			<li><a href="#10">References</a></li>
+
+		</ul>
+
+		<p class="credits">&copy; 2016. Y1473760. Physical Modelling Synthesis Assignment<br />
+		Template by Andreas Viklund</a></a></p>
+	</div>
+
+	<div id="content">
+		<h2>Physical Modelling – Past, Present and Future</h2>
+		<p>Music technology disciples have long argued the benefits of “virtual” instruments against their real world, physical counterparts.
+			 Those firmly on the side of real instruments have often wondered why music technologists would take interest or even prefer a
+		   physical model of, for example, a piano, to a one with hammers striking strings inside a wooden casing. </p>
+
+    <p>While most music traditionalists are unlikely to be convinced, there are several obvious benefits of virtual instruments,
+			 such as their cheaper cost and superior signal-to-noise ratio, compared to a recorded real instrument. They are also far
+			 more portable; sets of virtual instrument presets are much more compact and easily accessible. Whereas a studio filled with
+			 an assortment of wind, string, brass and keyboard instruments may be difficult for most to acquire, a modelled preset can be
+			 loaded and ready to use in a matter of seconds. </p>
+
+
+		<br><h2>What is Physical Modelling?<a name="1"></a></h2>
+
+		<p>In short, physical modelling is a form of synthesis based on simulating the intricate methods and mechanisms of sound
+			 production in actual musical instruments, using mathematical equations taken from the laws of physics to model the
+			 instrument’s characteristics. </p>
+
+	  <p>Consider the different aspects of an instrument, reduced to two categories: the driver and resonator. [1]
+			 Driving mechanisms are what excites the system. Though there are many different types, some examples include: </p>
+
+		<ul>
+		<p>•	<b>Plucking a string.</b> This involves pulling the string from its resting position with a finger or plectrum and suddenly releasing it again;</p>
+		<p>•	<b>Bowing a string.</b> Much like plucking, the string is excited by small pulls and releases from the bow;</p>
+		<p>•	<b>The impact of a hammer,</b> whether it be on a mallet percussion instrument or the strings of a piano;</p>
+		<p>•	<b>Blowing into a mouthpiece/reed.</b> Trumpets, for example, are excited by the vibration of the player’s lips in the mouthpiece. Reed instruments
+		   such as the oboe are excited by the vibration of the reed from blown air from the player.</p>
+		</ul>
+
+		<p>Perhaps the simplest example of a resonator is a string. When excited, by a pluck, bow or hammer, the string resonates at a
+			 frequency related to the length of the string, which is altered by fretting and therefore changing the frequency. Similarly,
+			 the length of a pipe will change its frequency when excited by air blown across it.</p>
+
+		<p>Though some will remember physical modelling synthesis gaining popularity during the 1990s with the release of the Yamaha VL1
+			 and its family of similar synthesizers, the fundamental principles of physical modelling in music technology, particularly
+			 in digital waveguide techniques, stretch much further back.</p>
+
+		<br><h2>d’Alembert’s Travelling Wave Solution<a name="2"></a></h2>
+
+		<p>The mathematical origins of digital waveguide, physical modelling technology originate in the 18th Century. The 1D, wave equation
+			for a vibrating string of infinite length is a second-order, partial differential equation for the function <i>y</i>, of time <i>t</i> and position <i>x</i>, where <i>c</i> is equal to <i>string tension/string density</i>:</p>
+
+		<center><p><image src = "1D wave equation.png" style="width:330px;height:93px;"></p><p><image src = "1D wave equation table.png" style="width:382px;height:88px;">[2]</p></center>
+
+    <br><p>d’Alembert’s travelling wave solution to the above equation, published in 1747, is as follows:</p>
+
+		<center><p><image src = "dalembert equation.png" style="width:346px;height:64px;"></p></center>
+
+		<p>This means that when the ideal string is plucked, it causes a pair of waves to travel along the string in opposite directions,
+			where <i>yr(t-x/c)</i> denotes the right travelling wave and <i>yl(t+x/c)</i> denotes the left travelling wave. [3] Therefore,
+			the vibration of the string is the sum of the two travelling waves.</p>
+
+		<p>As seen throughout the remainder of this article, d’Alembert’s solution is critical to the development of digital waveguides in physical modelling.</p>
+
+		<br><h2>The Kelly-Lochbaum Vocal Tract Model<a name="3"></a></h2>
+
+		<p>In the late 1950s and early 1960s (and published in 1962), John L. Kelly and Carol C. Lochbaum developed one of the earliest examples of physical modelling
+			synthesis. Together, they developed a digital model of a human vocal tract, modelled on a set of concatenated cylinders of different sizes. [3]</p>
+
+		<br><center><p><image src = "kelly-lochbaum vocal tract.gif" style="width:423px;height:241px;">[4]</p></center>
+
+		<p>Glottal pulses, emitted at the base of the vocal tract, cause plane waves to travel down the cylinders and “scatter”, caused by the
+			changing of impedance where cylinders meet at each junction, causing transmission and reflections which occur in both directions. [3]
+			The concept of impedance and scattering is covered in further detail later in the article. </p>
+
+		<p>Kelly and Lochbaum applied and obtained D’Alembert’s travelling-wave solution in each cylinder of the vocal tract model, then
+			applying the Nyquist Theorem to digitize the model for use in computing. [5]</p>
+
+		<p>The pair collaborated with one of the pioneers of computer music, Max Matthews, in 1961, to demonstrate their model,
+			effectively producing the first ever example of physical modelling synthesis at work; their rendition of
+			“Bicycle Built For Two”, performed using the vocal tract model, sounds particularly impressive for its time, despite
+			the cylindrical model being only an approximation of a vocal tract’s shape. It even inspired the song’s famous use
+			in 2001: A Space Odyssey, sung by HAL-9000. Audio of the performance is included below.</p>
+
+		<p><audio controls>
+		<source src="bicyclebuiltfortwo.mp3" type="audio/mp3">
+		Your browser does not support the audio tag.
+	  </audio></p>
+
+		<br><h2>Digital Waveguides<a name="4"></a></h2>
+
+		<p>Digital waveguides are a form of physical modelling synthesis, worked on in the 1980s and 1990s in Stanford University,
+			perhaps most notably by Julius O. Smith III. The fundamental principal of digital waveguides lies in delay lines. d’Alembert’s
+			travelling wave solution, with waves travelling across a string in opposing directions can be modelled digitally using two
+			parallel digital delay lines (demonstrated in the diagram below), each containing a sampled, acoustic travelling wave to simulate the left and right moving waves. [7] </p>
+
+    <center><p><image src = "digitaldelayline.png" style="width:232px;height:148px;">[8]</p></center>
+
+		<p>It should be noted that the physical wave vibration output is actually achieved by summing the travelling wave delay lines.
+			The input point, equivalent to plucking or bowing a string for example, results in the actual movement of the waves from
+			left and right of the point. However, if the there are already waves travelling on the delay lines (i.e – if there was
+			already something exciting the system) the input disturbances enter the waveguide superimposed with the already existing
+			waves.</p>
+
+	  <p>It is also important to consider the wave impedance in a digital waveguide (<i>R</i> in the above diagram) where:</p>
+
+		<center><p><image src = "wave impedance equation.png" style="width:258px;height:91px;"></p></center>
+
+	  <p>A change in wave impedance would correspond to, for instance, a change in the density or thickness of a string, or a change
+			in the thickness of an acoustic tube, such as in woodwind instruments. Waves will travel on a digital waveguide normally, provided
+			the impedance remains the same. However, when a travelling wave does face a change in wave impedance, “scattering” occurs. Simply,
+			this means the wave will continue to partially transmit in its original direction and partially reflect in the opposite direction it is travelling. [7]</p>
+
+    <p>This is perhaps best exemplified by the previously mentioned Kelly-Lochbaum vocal tract model, where scattering occurs at each junction as the connected
+			cylinders change in shape. The Kelly-Lochbaum scattering junction (the diagram below) maps this concept, where the reflection coefficient, <i>k1</i>, is achieved
+			 like so:</p>
+
+		<center><p><image src = "scattering junction equation.png" style="width:186px;height:87px;"></p></center>
+		<center><p><image src = "scattering junction.png" style="width:437px;height:180px;"></p></center>
+
+		<p>Overall, digital waveguides are not only an effective method of physical modelling, they are also relatively cheap and simple, as they do not require a great
+			amount of processing power, something essential for real-time synthesis such as this. [3] This implementation of bidirectional digital delay lines is useful
+			as a starting point for modelling a number of convincing instruments, such as strings, clarinets, flutes and trumpets. </p>
+
+		<h3>Digital Waveguide Examples</h3>
+
+		<p>The sound examples included below are the results of using the digital waveguide delay line techniques in the MATLAB programming environment.</p>
+
+    <h3>Plucked String<a name="5"></a></h3>
+
+		<p><audio controls>
+		<source src="pluckedstring.mp3" type="audio/mp3">
+		Your browser does not support the audio tag.			</audio></p>
+
+		<p>In this example, losses are added into the system; losses would occur when energy is transferred to other sections of the instrument and in a real stringed instrument, this would be
+		at the bridge and the nut at either end of the string. <i>Frequency dependant</i> losses are also added in the form of a first order low pass filter. </p>
+
+		<h3>Slide Flute<a name="6"></a></h3>
+		<p><audio controls>
+		<source src="slideflute.mp3" type="audio/mp3">
+		Your browser does not support the audio tag.			</audio></p>
+
+		<p>A number of things are done here to ensure a realistic emulation. To simulate the breath sounds, noise is added to the initial excitation and an
+			envelope is used to fade in and out, simulating a smooth flow of air. Additionally, a gradual vibrato effect is applied in the way that a real performer
+			would do when sustaining a note.
+
+
+		<br><h2>The Yamaha VL-1<a name="7"></a></h2>
+
+		<p>It would be illogical, in an article regarding the concepts and history of physical modelling synthesis,
+			to not talk about the Yamaha VL-1 and its related family of synthesizers. The VL-1 was released in 1994 as
+			a product of collaboration between Yamaha and Stanford University, as the first physical modelling synthesizer
+			available to the public. The model was based on digital waveguide techniques, with a price of approximately £6000. </p>
+
+		<center><p><image src = "yamahavl1.jpg" style="width:400px;height:248px;"></p></center>
+
+		<p>The model did exhibit some strengths; certain sounds were quite realistic and impressive and highly editable, allowing
+			users to combine the driver of one instrument with the resonators or another (a plucked driver with an acoustic pipe resonator,
+			for example). However, the actual process of editing sounds and presets was a laborious one, requiring much time and effort to
+			master. Furthermore, wind patches were controlled via a breath controller modelled on a saxophone mouthpiece, meaning players
+			required proficient skill in the instrument to get the most out of the sounds. </p>
+
+		<p>The three sound examples below, taken from the VL-1, demonstrate the synthesizer’s capabilities, in both winds (played with
+			aforementioned breath controller) and plucked string sounds.</p>
+
+
+		<h3>Flute</h3>
+		<p><audio controls>
+		<source src="vl1flute.mp3" type="audio/mp3">
+		Your browser does not support the audio tag.			</audio></p>
+
+    <h3>Clarinet</h3>
+		<p><audio controls>
+		<source src="vl1clarinet.mp3" type="audio/mp3">
+		Your browser does not support the audio tag.			</audio></p>
+
+		<h3>Sitar</h3>
+		<p><audio controls>
+		<source src="vl1sitar.mp3" type="audio/mp3">
+		Your browser does not support the audio tag.			</audio></p>
+
+		<br><h2>Current Trends in Physical Modelling<a name="8"></a></h2>
+
+		<p>The physical modelling research and milestones included in the article so far only cover the subject’s origins and the subsequent
+			work done in digital waveguide techniques during the later 20th Century. However, physical modelling synthesis is still a widely
+			researched area today. </p>
+
+		<p>Much of the current physical modelling synthesis research is focused on the simulation of analogue systems, such as effects and amplifiers,
+			rather than furthering the previous work done on synthesizing convincing models of acoustic instruments. For instance, Line 6, alongside Roland’s
+			popular COSM (Composite Object Sound Modelling) multi-FX units, have been at the forefront of guitar and bass amplifier and effects modelling
+			since the early 2000s with their line of “Pod” pre-amp modules, as well as their “Variax” modelling guitars. </p>
+
+		<p>Similarly, although there is a lack of physical modelling synthesizers on the market in the vein of the Yamaha VL-1 (simulating acoustic instruments),
+			the technology is instead being used to provide accurate emulation of older analogue synthesizers. The Nord Lead series of workstation synthesizers
+			is a popular example of this, with a vast range of classic synthesizer emulations. </p>
+
+		<p>Current research is also focusing on using digital waveguides in a series of interconnected scattering junctions in the form of a 2-dimensional mesh
+			system; the Digital Waveguide Mesh. This method allows for more accurate and realistic synthesis, especially as it can simulate low frequency components
+			of an object much more ably in comparison to a 1D model. [12] Recently, the University of York have been applying this mesh technique to the vocal tract (see the below image)
+			to produce more realistic voice synthesis, by using the 2D Digital Waveguide Mesh to model the shape of a human vocal tract more accurately than a 1D
+			digital waveguide system would allow. </p>
+
+		<center><p><image src = "mesh vocal tract.png" style="width:431px;height:163px;"></p></center>
+
+		<br><h2>The Future<a name="9"></a></h2>
+
+		<p>Physical Modelling Synthesis is still a heavily research subject today, even after over 50 years in the digital domain, thus begging the question; what is next? Despite its complexities and
+			 steep learning curve in commercial devices, it is hard to deny that the digital waveguide, physical modelling synthesis used in Yamaha VL-1 yielded impressive results in the simulation of
+			  acoustic instruments, especially in the early 1990s. At one point it looked to be the future of synthesis, yet, for a number of reasons covered in this article, it was still a commercial failure.
+				It is likely that the future will continue to see continued growth in the current trend of the physical modelling for virtual analogue systems, both for guitars and synthesizers. </p>
+
+		<p>Moreover, the processing powers of computers is more powerful than it has ever been and by prediction of Moore’s Law, will only continue to grow. When the Yamaha VL1 was released, sampling
+			synthesis was limited by the computer hardware of the time, but today these restraints are lifted. Therefore, it seems likely that the use of physical modelling to synthesize acoustic instruments
+			 will come to an end.
+		</p>
+
+		<h3>Word Count = 1951</h3>
+
+		<br><h2>References<a name="10"></a></h2>
+
+		<p>[1] M. Russ. (1997, June). <i>"Physical Modelling Synthesis Explained".</i> Sound on Sound [Online]. Available: http://www.soundonsound.com/sos/1997_articles/jun97/physicalmodel.html. [Accessed 8/4/16].</p>
+		<p>[2] J. O. Smith. <i>"Wave Equations".</i> [Online]. Available: https://ccrma.stanford.edu/~jos/WaveEquations/img1.png. [Accessed 8/4/16].</p>
+		<p>[3] YouTube. <i>"Julius Smith - Sound synthesis based on physical models".</i> youtube.com. [Online]. Available: https://www.youtube.com/watch?v=dUcNzPhZdwk. [Accessed 8/4/16].</p>
+		<p>[4] Siddharth Mathur. (2014). <i>Variable-Length Vocal Tract Modeling for Speech Synthesis.</i> [Online]. Available: http://www2.engr.arizona.edu/~sail/Past_Research/siddharth/index.html. [Accessed 10/4/16].</p>
+		<p>[5] J. O. Smith, <i>Physical Audio Signal Processing: For Virtual Musical Instruments and Audio Effects.</i> Stanford, CA: W3K Publishing, 2010.</p>
+		<p>[6] YouTube. <i>"Max Matthews - Bycicle Built For Two (1961)".</i> youtube.com [Online]. Available: https://www.youtube.com/watch?v=ZFUVR-clo8g. [Accessed: 12/4/16].</p>
+		<p>[7] D. Murphy. (2015). <i>"Digital waveguides".</i> [Online]. Available: https://www.elec.york.ac.uk/internal_web/bsc/yr3/modules/Physical_Modelling_Synthesis/PMS_3.pdf. [Accessed 11/4/16].</p>
+		<p>[8] J. Smith. (2012). <i>"Sound Synthesis Based on Physical Models"</i>. [Online]. Available: http://www.cirmmt.org/activities/distinguished-lectures/smith-slides. [Accessed 11/4/16].</p>
+		<p>[9] Yamaha. <i>"Yamaha VL1".</i> [Online]. Available: http://jp.yamaha.com/sp/blog/synth/wp-content/uploads/2012/08/016.jpg. [Accessed 13/4/16].</p>
+		<p>[10][11] K. Barry. <i>"Yamaha VL1-m Audio Clips".</i> [Online]. Available: http://www.kbspace.com/vl1m/audio/index.html. [Accessed 12/4/16].</p>
+		<p>[12] D. Murphy. (2015). <i>"Waveguides and Multi-dimensional Physical Modelling".</i> [Online]. Available: https://www.elec.york.ac.uk/internal_web/bsc/yr3/modules/Physical_Modelling_Synthesis/PMS_4.pdf. [Accessed 11/4/16].</p>
+
+
+
+
+
+	</div>
+
+</div>
+</body>
+</html>
